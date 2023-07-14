@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
 public class Even  implements Gameable {
-    private final String GAME_TITLE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     private String question = "";
     private String rightAnswer = "";
 
@@ -28,7 +27,7 @@ public class Even  implements Gameable {
 
     @Override
     public String getGameTitle() {
-        return GAME_TITLE;
+        return "Answer 'yes' if the number is even, otherwise answer 'no'.";
     }
 }
 

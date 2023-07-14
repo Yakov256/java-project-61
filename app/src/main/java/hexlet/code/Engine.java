@@ -4,7 +4,13 @@ import hexlet.code.games.Gameable;
 import java.util.Scanner;
 
 public class Engine {
-    private final int MAX_ROUNDS_COUNT = 3;
+    /*
+    Private final int MAX_ROUNDS_COUNT = 50;
+    Линтер ругается на такое название, но я читал, что так принято обозначать
+    константы, что бы их можно было отличить от переменных.
+    Подскажите как лучше именовать константы?
+    */
+    private final int maxRoundsCount = 3;
     public Engine(Gameable game, String userName) {
         int correctAnswerCount = 0;
         boolean gameOver = false;
@@ -12,7 +18,7 @@ public class Engine {
 
         System.out.println(game.getGameTitle());
 
-        while (!gameOver && correctAnswerCount < MAX_ROUNDS_COUNT) {
+        while (!gameOver && correctAnswerCount < maxRoundsCount) {
             game.generateNewQuestion();
             System.out.println(game.getQuestion());
             String userAnswer = scanner.next();
@@ -29,7 +35,7 @@ public class Engine {
             }
         }
 
-        if (correctAnswerCount >= MAX_ROUNDS_COUNT) {
+        if (correctAnswerCount >= maxRoundsCount) {
             System.out.println("Congratulations, " + userName + "!");
         }
 

@@ -1,9 +1,13 @@
 package hexlet.code.games;
 
 public class Calc implements Gameable {
-
-    private final String GAME_TITLE = "What is the result of the expression?";
-    private final int MAX_RANDOM_NUMBER = 50;
+    /*
+    Private final int MAX_RANDOM_NUMBER = 50;
+    Линтер ругается на такое название, но я читал, что так принято обозначать
+    константы, что бы их можно было отличить от переменных.
+    Подскажите как лучше именовать константы?
+    */
+    private final int maxRandomNumber = 50;
     private String question = "";
     private String rightAnswer = "";
 
@@ -11,8 +15,8 @@ public class Calc implements Gameable {
     public void generateNewQuestion() {
 
         int randomMathOperation = (int) (Math.random() * 3);
-        int randomNumber1 =  (int) (Math.random() * MAX_RANDOM_NUMBER);
-        int randomNumber2 =  (int) (Math.random() * MAX_RANDOM_NUMBER);
+        int randomNumber1 =  (int) (Math.random() * maxRandomNumber);
+        int randomNumber2 =  (int) (Math.random() * maxRandomNumber);
         String mathOperation = "";
 
         if (randomMathOperation == 0) {
@@ -42,7 +46,7 @@ public class Calc implements Gameable {
 
     @Override
     public String getGameTitle() {
-        return GAME_TITLE;
+        return "What is the result of the expression?";
     }
 
 }

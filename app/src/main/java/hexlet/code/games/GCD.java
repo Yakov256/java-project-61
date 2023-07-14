@@ -1,15 +1,14 @@
 package hexlet.code.games;
 
-public class GCD implements Gameable{
-    private final String GAME_TITLE = "Find the greatest common divisor of given numbers.";
-    private final int MAX_RANDOM_NUMBER = 50;
+public class GCD implements Gameable {
+    private final int maxRandomNumber = 50;
     private String question = "";
     private String rightAnswer = "";
 
     @Override
     public void generateNewQuestion() {
-        int randomNumber1 =  (int) (Math.random() * MAX_RANDOM_NUMBER);
-        int randomNumber2 =  (int) (Math.random() * MAX_RANDOM_NUMBER);
+        int randomNumber1 =  (int) (Math.random() * maxRandomNumber);
+        int randomNumber2 =  (int) (Math.random() * maxRandomNumber);
 
         question = "Question: " + randomNumber1 + " " + randomNumber2;
         rightAnswer = String.valueOf(getGCD(randomNumber1, randomNumber2));
@@ -36,6 +35,6 @@ public class GCD implements Gameable{
 
     @Override
     public String getGameTitle() {
-        return GAME_TITLE;
+        return "Find the greatest common divisor of given numbers.";
     }
 }
