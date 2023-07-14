@@ -3,6 +3,7 @@ package hexlet.code;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
 
 import java.util.Scanner;
@@ -28,6 +29,8 @@ public class App {
                 new Engine(new GCD(), userName);
             } else if (selectedMenuItem == 5) {
                 new Engine(new Progression(), userName);
+            } else if (selectedMenuItem == 6) {
+                new Engine(new Prime(), userName);
             }
         }
 
@@ -40,6 +43,7 @@ public class App {
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
         System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
         System.out.println("0 - Exit");
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.next();
