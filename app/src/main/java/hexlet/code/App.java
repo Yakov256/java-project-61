@@ -12,33 +12,32 @@ public class App {
     public static void main(String[] args) {
         String userName = "User";
         int selectedMenuItem = -255;
-        //while (selectedMenuItem != 0) {
-        selectedMenuItem = showMainMenu();
-        System.out.println("Your choice: " + selectedMenuItem);
+        while (selectedMenuItem != 0) {
+            selectedMenuItem = showMainMenu();
+            System.out.println("Your choice: " + selectedMenuItem);
 
-        if (selectedMenuItem == 0) {
-            System.out.println("Good by," + userName + "!");
-
-        } else if (selectedMenuItem == 1) {
-            userName = Cli.askName();
-        } else if (selectedMenuItem == 2) {
-            new Engine(new Even(), userName);
-        } else if (selectedMenuItem == 3) {
-            new Engine(new Calc(), userName);
-        } else if (selectedMenuItem == 4) {
-            new Engine(new GCD(), userName);
-        } else if (selectedMenuItem == 5) {
-            new Engine(new Progression(), userName);
-        } else if (selectedMenuItem == 6) {
-            new Engine(new Prime(), userName);
+            if (selectedMenuItem == 0) {
+                System.out.println("Good by," + userName + "!");
+            } else if (selectedMenuItem == 1) {
+                userName = Cli.askName();
+            } else if (selectedMenuItem == 2) {
+                new Engine(new Even(), userName);
+            } else if (selectedMenuItem == 3) {
+                new Engine(new Calc(), userName);
+            } else if (selectedMenuItem == 4) {
+                new Engine(new GCD(), userName);
+            } else if (selectedMenuItem == 5) {
+                new Engine(new Progression(), userName);
+            } else if (selectedMenuItem == 6) {
+                new Engine(new Prime(), userName);
+            }
         }
-        //}
 
     }
 
     public static int showMainMenu() {
         System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet ");
+        System.out.println("1 - Greet");
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");

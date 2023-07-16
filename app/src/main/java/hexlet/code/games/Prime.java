@@ -6,7 +6,7 @@ public class Prime implements Gameable {
 
     @Override
     public void generateNewQuestion() {
-        int randomNumber = (int) (Math.random() * 50);
+        int randomNumber = (int) (Math.random() * 100);
         question = "Question: " + randomNumber;
         rightAnswer = isSimple(randomNumber);
     }
