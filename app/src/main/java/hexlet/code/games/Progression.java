@@ -37,6 +37,6 @@ public class Progression implements Gameable {
 
     @Override
     public String getGameTitle() {
-        return "What is the result of the expression?";
+        return "What number is missing in the progression?";
     }
 }
