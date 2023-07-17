@@ -24,10 +24,6 @@ test {
     useJUnitPlatform()
 }
 
-compileJava {
-    options.release = 20
-}
-
 run {
     standardInput = System.in
 }
