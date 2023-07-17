@@ -10,11 +10,15 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        String userName = "User";
+        String userName = "";
         int selectedMenuItem = -255;
-        //while (selectedMenuItem != 0) {
+        while (selectedMenuItem != 0) {
             selectedMenuItem = showMainMenu();
             System.out.println("Your choice: " + selectedMenuItem);
+
+            if (userName.equals("")) {
+                Cli.askName();
+            }
 
             if (selectedMenuItem == 0) {
                 System.out.println("Good by," + userName + "!");
@@ -31,7 +35,7 @@ public class App {
             } else if (selectedMenuItem == 6) {
                 new Engine(new Prime(), userName);
             }
-        //}
+        }
 
     }
 
