@@ -20,6 +20,10 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+compileJava {
+    options.release = 20
+}
+
 test {
     useJUnitPlatform()
 }
