@@ -3,10 +3,11 @@ package hexlet.code.games;
 public class Prime implements Gameable {
     private String question = "";
     private String rightAnswer = "";
+    private final int maxRandomNumber = 100;
 
     @Override
     public void generateNewQuestion() {
-        int randomNumber = (int) (Math.random() * 100);
+        int randomNumber = (int) (Math.random() * maxRandomNumber);
         question = "Question: " + randomNumber;
         rightAnswer = isSimple(randomNumber);
     }

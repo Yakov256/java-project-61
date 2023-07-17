@@ -3,13 +3,16 @@ package hexlet.code.games;
 public class Progression implements Gameable {
     private String question = "";
     private String rightAnswer = "";
+    private final int maxProgressionStep = 9;
+    private final int maxSequenceLength = 5;
+    private final int maxStartNumber = 25;
 
     @Override
     public void generateNewQuestion() {
 
-        int stepValue = 1 + (int) (Math.random() * 8);
-        int sequenceLength = 5 + (int) (Math.random() * 5);
-        int startNumber = 1 + (int) (Math.random() * 15);
+        int stepValue = 1 + (int) (Math.random() * maxProgressionStep);
+        int sequenceLength = maxSequenceLength + (int) (Math.random() * maxSequenceLength);
+        int startNumber = 1 + (int) (Math.random() * maxStartNumber);
         int hiddenNumber = 1 + (int) (Math.random() * (sequenceLength - 1));
         StringBuilder questionStr = new StringBuilder("Question:");
 
