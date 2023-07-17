@@ -11,34 +11,34 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         String userName = "";
-        int selectedMenuItem;
+        String selectedMenuItem;
 
         selectedMenuItem = showMainMenu();
         System.out.println("Your choice: " + selectedMenuItem);
 
-        if (userName.equals("") && (selectedMenuItem != 0)) {
+        if (userName.equals("") && !selectedMenuItem.equals("0")) {
             userName = Cli.askName();
         }
 
-        if (selectedMenuItem == 0) {
+        if (selectedMenuItem.equals("0")) {
             System.out.println("Good by," + userName + "!");
-        } else if (selectedMenuItem == 1) {
-            userName = Cli.askName();
-        } else if (selectedMenuItem == 2) {
+        //} else if (selectedMenuItem.equals("1")) {
+          //  userName = Cli.askName();
+        } else if (selectedMenuItem.equals("2")) {
             new Engine(new Even(), userName);
-        } else if (selectedMenuItem == 3) {
+        } else if (selectedMenuItem.equals("3")) {
             new Engine(new Calc(), userName);
-        } else if (selectedMenuItem == 4) {
+        } else if (selectedMenuItem.equals("4")) {
             new Engine(new GCD(), userName);
-        } else if (selectedMenuItem == 5) {
+        } else if (selectedMenuItem.equals("5")) {
             new Engine(new Progression(), userName);
-        } else if (selectedMenuItem == 6) {
+        } else if (selectedMenuItem.equals("6")) {
             new Engine(new Prime(), userName);
         }
 
     }
 
-    public static int showMainMenu() {
+    public static String showMainMenu() {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
@@ -49,13 +49,14 @@ public class App {
         System.out.println("0 - Exit");
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.next();
-
+        /*
         try {
             return Integer.parseInt(userInput);
         } catch (NumberFormatException e) {
             System.out.println("Необходимо ввести число!");
         }
-        return -255;
+        */
+        return userInput;
     }
 
 }
