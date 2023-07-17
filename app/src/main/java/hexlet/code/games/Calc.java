@@ -8,13 +8,14 @@ public final class Calc implements Gameable {
     Подскажите как лучше именовать константы?
     */
     private final int maxRandomNumber = 50;
+    private final int maxDifferentOperations = 3;
     private String question = "";
     private String rightAnswer = "";
 
     @Override
     public void generateNewQuestion() {
 
-        int randomMathOperation = (int) (Math.random() * 3);
+        int randomMathOperation = (int) (Math.random() * maxDifferentOperations);
         int randomNumber1 =  (int) (Math.random() * maxRandomNumber);
         int randomNumber2 =  (int) (Math.random() * maxRandomNumber);
         String mathOperation = "";

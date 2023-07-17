@@ -22,8 +22,6 @@ public class App {
 
         if (selectedMenuItem.equals("0")) {
             System.out.println("Good by," + userName + "!");
-        //} else if (selectedMenuItem.equals("1")) {
-          //  userName = Cli.askName();
         } else if (selectedMenuItem.equals("2")) {
             new Engine(new Even(), userName);
         } else if (selectedMenuItem.equals("3")) {
@@ -49,13 +47,7 @@ public class App {
         System.out.println("0 - Exit");
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.next();
-        /*
-        try {
-            return Integer.parseInt(userInput);
-        } catch (NumberFormatException e) {
-            System.out.println("Необходимо ввести число!");
-        }
-        */
+
         return userInput;
     }
 
