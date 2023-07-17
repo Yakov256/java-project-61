@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-public class Prime implements Gameable {
+public final class Prime implements Gameable {
     private String question = "";
     private String rightAnswer = "";
     private final int maxRandomNumber = 100;

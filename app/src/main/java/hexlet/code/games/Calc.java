@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-public class Calc implements Gameable {
+public final class Calc implements Gameable {
     /*
     Private final int MAX_RANDOM_NUMBER = 50;
     Линтер ругается на такое название, но я читал, что так принято обозначать

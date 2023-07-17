@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-public class GCD implements Gameable {
+public final class GCD implements Gameable {
     private final int maxRandomNumber = 50;
     private String question = "";
     private String rightAnswer = "";

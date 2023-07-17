@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-public class Even  implements Gameable {
+public final class Even  implements Gameable {
     private String question = "";
     private String rightAnswer = "";
     private final int maxRandomNumber = 1000;

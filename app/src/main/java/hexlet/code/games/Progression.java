@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-public class Progression implements Gameable {
+public final class Progression implements Gameable {
     private String question = "";
     private String rightAnswer = "";
     private final int maxProgressionStep = 9;
