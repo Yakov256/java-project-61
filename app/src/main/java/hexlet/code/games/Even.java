@@ -1,34 +1,38 @@
 package hexlet.code.games;
 
 public final class Even  implements Gameable {
+    private final String gameTitle = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    private final int maxRandomNumber = 1000;
     private String question = "";
     private String rightAnswer = "";
-    private final int maxRandomNumber = 1000;
 
     @Override
     public void generateNewQuestion() {
         int randomNumber = (int) (Math.random() * maxRandomNumber);
-        question = "Question: " + randomNumber;
+        question = calculateQuestion(randomNumber);
+        rightAnswer = calculateRightAnswer(randomNumber);
+    }
+
+    private String calculateQuestion(int randomNumber) {
+        return "Question: " + randomNumber;
+    }
+
+    private String calculateRightAnswer(int randomNumber) {
         if ((randomNumber % 2) == 0) {
-            rightAnswer = "Yes";
+            return "Yes";
         } else {
-            rightAnswer = "No";
+            return "No";
         }
     }
 
     @Override
-    public String getQuestion() {
-        return question;
-    }
-
-    @Override
-    public String getRightAnswer() {
-        return rightAnswer;
+    public QuizQuestion getQuizQuestion() {
+        return new QuizQuestion(question, rightAnswer);
     }
 
     @Override
     public String getGameTitle() {
-        return "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        return gameTitle;
     }
 }
 

@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.games.Gameable;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
@@ -10,33 +11,45 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        String userName = "";
         String selectedMenuItem;
+        Gameable game = null;
 
-        selectedMenuItem = showMainMenu();
+        showMainMenu();
+        Scanner scanner = new Scanner(System.in);
+        selectedMenuItem = scanner.next();
         System.out.println("Your choice: " + selectedMenuItem);
 
-        if (userName.equals("") && !selectedMenuItem.equals("0")) {
-            userName = Cli.askName();
+        /*
+        //Такое решение не пропускает линтер
+        switch (selectedMenuItem) {
+            case "0" -> System.out.println("Good by," + "!");
+            case "1" -> Cli.askName();
+            case "2" -> game = new Even();
+            case "3" -> game = new Calc();
+            case "4" -> game = new GCD();
+            case "5" -> game = new Progression();
+            case "6" -> game = new Prime();
         }
 
-        if (selectedMenuItem.equals("0")) {
-            System.out.println("Good by," + userName + "!");
-        } else if (selectedMenuItem.equals("2")) {
-            new Engine(new Even(), userName);
-        } else if (selectedMenuItem.equals("3")) {
-            new Engine(new Calc(), userName);
-        } else if (selectedMenuItem.equals("4")) {
-            new Engine(new GCD(), userName);
-        } else if (selectedMenuItem.equals("5")) {
-            new Engine(new Progression(), userName);
-        } else if (selectedMenuItem.equals("6")) {
-            new Engine(new Prime(), userName);
+        if (game != null) {
+            new Engine(game);
+        }
+        */
+
+        switch (selectedMenuItem) {
+            case "0" -> System.out.println("Good by," + "!");
+            case "1" -> Cli.askName();
+            case "2" -> new Engine(new Even());
+            case "3" -> new Engine(new Calc());
+            case "4" -> new Engine(new GCD());
+            case "5" -> new Engine(new Progression());
+            //case "6" -> new Engine(new Prime());
+            default -> new Engine(new Prime());
         }
 
     }
 
-    public static String showMainMenu() {
+    public static void showMainMenu() {
         System.out.println("Please enter the game number and press Enter.");
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
@@ -45,10 +58,6 @@ public class App {
         System.out.println("5 - Progression");
         System.out.println("6 - Prime");
         System.out.println("0 - Exit");
-        Scanner scanner = new Scanner(System.in);
-        String userInput = scanner.next();
-
-        return userInput;
     }
 
 }

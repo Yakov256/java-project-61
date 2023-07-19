@@ -5,9 +5,9 @@ public interface Gameable {
 
     void generateNewQuestion();
 
-    String getQuestion();
+    QuizQuestion getQuizQuestion();
 
-    String getRightAnswer();
+    //String getRightAnswer();
 
     String getGameTitle();
 

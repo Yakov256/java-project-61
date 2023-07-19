@@ -1,12 +1,7 @@
 package hexlet.code.games;
 
 public final class Calc implements Gameable {
-    /*
-    Private final int MAX_RANDOM_NUMBER = 50;
-    Линтер ругается на такое название, но я читал, что так принято обозначать
-    константы, что бы их можно было отличить от переменных.
-    Подскажите как лучше именовать константы?
-    */
+    private final String gameTitle = "What is the result of the expression?";
     private final int maxRandomNumber = 50;
     private final int maxDifferentOperations = 3;
     private String question = "";
@@ -14,40 +9,44 @@ public final class Calc implements Gameable {
 
     @Override
     public void generateNewQuestion() {
-
         int randomMathOperation = (int) (Math.random() * maxDifferentOperations);
         int randomNumber1 =  (int) (Math.random() * maxRandomNumber);
         int randomNumber2 =  (int) (Math.random() * maxRandomNumber);
-        String mathOperation = "";
 
-        if (randomMathOperation == 0) {
-            mathOperation = "+";
-            rightAnswer = String.valueOf(randomNumber1 + randomNumber2);
-        } else if (randomMathOperation == 1) {
-            mathOperation = "-";
-            rightAnswer = String.valueOf(randomNumber1 - randomNumber2);
-        } else {
-            mathOperation = "*";
-            rightAnswer = String.valueOf(randomNumber1 * randomNumber2);
+        question =  calculateQuestion(randomNumber1, randomMathOperation, randomNumber2);
+        rightAnswer = calculateRightAnswer(randomNumber1, randomMathOperation, randomNumber2);
+   }
+
+    private String calculateQuestion(int randomNumber1, int randomMathOperation, int randomNumber2) {
+        String mathOperation = "";
+        switch (randomMathOperation) {
+            case 0 -> mathOperation = "+";
+            case 1 -> mathOperation = "-";
+            default -> mathOperation = "*";
         }
 
-        question = "Question: " + randomNumber1 + " " + mathOperation + " " + randomNumber2;
+        return "Question: " + randomNumber1 + " " + mathOperation + " " + randomNumber2;
+    }
 
+    private String calculateRightAnswer(int randomNumber1, int randomMathOperation, int randomNumber2) {
+        String rezult = "";
+        switch (randomMathOperation) {
+            case 0 -> rezult = String.valueOf(randomNumber1 + randomNumber2);
+            case 1 -> rezult = String.valueOf(randomNumber1 - randomNumber2);
+            default -> rezult = String.valueOf(randomNumber1 * randomNumber2);
+        }
+
+        return rezult;
     }
 
     @Override
-    public String getQuestion() {
-        return question;
-    }
-
-    @Override
-    public String getRightAnswer() {
-        return rightAnswer;
+    public QuizQuestion getQuizQuestion() {
+        return new QuizQuestion(question, rightAnswer);
     }
 
     @Override
     public String getGameTitle() {
-        return "What is the result of the expression?";
+        return gameTitle;
     }
 
 }

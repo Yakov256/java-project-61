@@ -1,6 +1,8 @@
 package hexlet.code;
 
 import hexlet.code.games.Gameable;
+import hexlet.code.games.QuizQuestion;
+
 import java.util.Scanner;
 
 public class Engine {
@@ -11,27 +13,29 @@ public class Engine {
     Подскажите как лучше именовать константы?
     */
     private final int maxRoundsCount = 3;
-    public Engine(Gameable game, String userName) {
+    public Engine(Gameable game) {
         int correctAnswerCount = 0;
-        boolean gameOver = false;
         Scanner scanner = new Scanner(System.in);
 
+        String userName = Cli.askName();
         System.out.println(game.getGameTitle());
 
-        while (!gameOver && correctAnswerCount < maxRoundsCount) {
+        //while (!gameOver && correctAnswerCount < maxRoundsCount) {
+        for (int i = 0; i < maxRoundsCount; i++) {
             game.generateNewQuestion();
-            System.out.println(game.getQuestion());
+            QuizQuestion question = game.getQuizQuestion();
+            System.out.println(question.getQuestion());
             String userAnswer = scanner.next();
 
-            if (userAnswer.equalsIgnoreCase(game.getRightAnswer())) {
+            if (userAnswer.equalsIgnoreCase(question.getRightAnswer())) {
                 System.out.println("Your answer: " + userAnswer);
                 System.out.println("Correct!");
                 correctAnswerCount++;
             } else {
                 System.out.println(userAnswer + " is wrong answer ;(. Correct answer was  '"
-                        + game.getRightAnswer() + "'.");
+                        + question.getRightAnswer() + "'.");
                 System.out.println("Let's try again, " + userName + "!");
-                gameOver = true;
+                break;
             }
         }
 
