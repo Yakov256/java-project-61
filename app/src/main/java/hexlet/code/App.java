@@ -20,7 +20,7 @@ public class App {
         System.out.println("Your choice: " + selectedMenuItem);
 
         /*
-        //Такое решение не пропускает линтер
+        //Такое решение не пропускает линтер, пришлось вставлять в кейс: new Engine(new Even());
         switch (selectedMenuItem) {
             case "0" -> System.out.println("Good by," + "!");
             case "1" -> Cli.askName();
@@ -43,10 +43,9 @@ public class App {
             case "3" -> new Engine(new Calc());
             case "4" -> new Engine(new GCD());
             case "5" -> new Engine(new Progression());
-            //case "6" -> new Engine(new Prime());
+            // Блок default в логике нашего приложения тут не нужен, но линтер не пропускает без него
             default -> new Engine(new Prime());
         }
-
     }
 
     public static void showMainMenu() {

@@ -3,22 +3,20 @@ package hexlet.code.games;
 public final class Progression implements Gameable {
     private final String gameTitle = "What number is missing in the progression?";
     private final int maxProgressionStep = 9;
-    private final int maxSequenceLength = 5;
+    private final int maxSequenceLength = 8;
     private final int maxStartNumber = 25;
-    private String question = "";
-    private String rightAnswer = "";
 
     @Override
-    public void generateNewQuestion() {
+    public QuizQuestion getNewQuizQuestion() {
+        int stepValue = Utils.generateRandomNumber(1, maxProgressionStep);
+        int sequenceLength = maxSequenceLength / 2 + Utils.generateRandomNumber(maxSequenceLength / 2);
+        int startNumber = Utils.generateRandomNumber(1, maxStartNumber);
+        int hiddenNumber = Utils.generateRandomNumber(1, sequenceLength - 1);
 
-        int stepValue = 1 + (int) (Math.random() * maxProgressionStep);
-        int sequenceLength = maxSequenceLength + (int) (Math.random() * maxSequenceLength);
-        int startNumber = 1 + (int) (Math.random() * maxStartNumber);
-        int hiddenNumber = 1 + (int) (Math.random() * (sequenceLength - 1));
+        String rightAnswer = calculateRightAnswer(startNumber, stepValue, hiddenNumber);
+        String question = calculateQuestion(startNumber, stepValue, sequenceLength, hiddenNumber);
 
-        rightAnswer = calculateRightAnswer(startNumber, stepValue, hiddenNumber);
-        question = calculateQuestion(startNumber, stepValue, sequenceLength, hiddenNumber);
-        System.out.println("111");
+        return new QuizQuestion(question, rightAnswer);
     }
 
     private String calculateQuestion(int startNumber, int stepValue, int sequenceLength, int hiddenNumber) {
@@ -35,11 +33,6 @@ public final class Progression implements Gameable {
 
     private String calculateRightAnswer(int startNumber, int stepValue, int hiddenNumber) {
         return String.valueOf(startNumber + stepValue * hiddenNumber);
-    }
-
-    @Override
-    public QuizQuestion getQuizQuestion() {
-        return new QuizQuestion(question, rightAnswer);
     }
 
     @Override

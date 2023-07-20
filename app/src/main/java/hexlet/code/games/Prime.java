@@ -3,14 +3,15 @@ package hexlet.code.games;
 public final class Prime implements Gameable {
     private final String gameTitle = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     private final int maxRandomNumber = 100;
-    private String question = "";
-    private String rightAnswer = "";
 
     @Override
-    public void generateNewQuestion() {
-        int randomNumber = (int) (Math.random() * maxRandomNumber);
-        question = calculateQuestion(randomNumber);
-        rightAnswer = calculateRightAnswer(randomNumber);
+    public QuizQuestion getNewQuizQuestion() {
+        int randomNumber = Utils.generateRandomNumber(maxRandomNumber);
+
+        String question = calculateQuestion(randomNumber);
+        String rightAnswer = calculateRightAnswer(randomNumber);
+
+        return new QuizQuestion(question, rightAnswer);
     }
 
     private String calculateQuestion(int randomNumber) {
@@ -27,11 +28,6 @@ public final class Prime implements Gameable {
             }
         }
         return "Yes";
-    }
-
-    @Override
-    public QuizQuestion getQuizQuestion() {
-        return new QuizQuestion(question, rightAnswer);
     }
 
     @Override

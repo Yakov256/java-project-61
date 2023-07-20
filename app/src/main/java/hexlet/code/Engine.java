@@ -6,12 +6,6 @@ import hexlet.code.games.QuizQuestion;
 import java.util.Scanner;
 
 public class Engine {
-    /*
-    Private final int MAX_ROUNDS_COUNT = 50;
-    Линтер ругается на такое название, но я читал, что так принято обозначать
-    константы, что бы их можно было отличить от переменных.
-    Подскажите как лучше именовать константы?
-    */
     private final int maxRoundsCount = 3;
     public Engine(Gameable game) {
         int correctAnswerCount = 0;
@@ -20,10 +14,8 @@ public class Engine {
         String userName = Cli.askName();
         System.out.println(game.getGameTitle());
 
-        //while (!gameOver && correctAnswerCount < maxRoundsCount) {
         for (int i = 0; i < maxRoundsCount; i++) {
-            game.generateNewQuestion();
-            QuizQuestion question = game.getQuizQuestion();
+            QuizQuestion question = game.getNewQuizQuestion();
             System.out.println(question.getQuestion());
             String userAnswer = scanner.next();
 

@@ -3,16 +3,16 @@ package hexlet.code.games;
 public final class GCD implements Gameable {
     private final String gameTitle = "Find the greatest common divisor of given numbers.";
     private final int maxRandomNumber = 50;
-    private String question = "";
-    private String rightAnswer = "";
 
     @Override
-    public void generateNewQuestion() {
-        int randomNumber1 =  (int) (Math.random() * maxRandomNumber);
-        int randomNumber2 =  (int) (Math.random() * maxRandomNumber);
+    public QuizQuestion getNewQuizQuestion() {
+        int randomNumber1 =  Utils.generateRandomNumber(maxRandomNumber);
+        int randomNumber2 =  Utils.generateRandomNumber(maxRandomNumber);
 
-        question = calculateQuestion(randomNumber1, randomNumber2);
-        rightAnswer = calculateRightAnswer(randomNumber1, randomNumber2);
+        String question = calculateQuestion(randomNumber1, randomNumber2);
+        String rightAnswer = calculateRightAnswer(randomNumber1, randomNumber2);
+
+        return new QuizQuestion(question, rightAnswer);
     }
 
     private String calculateQuestion(int randomNumber1, int randomNumber2) {
@@ -26,11 +26,6 @@ public final class GCD implements Gameable {
             b = tmp;
         }
         return String.valueOf(a);
-    }
-
-    @Override
-    public QuizQuestion getQuizQuestion() {
-        return new QuizQuestion(question, rightAnswer);
     }
 
     @Override
