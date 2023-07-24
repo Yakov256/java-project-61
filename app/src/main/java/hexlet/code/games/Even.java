@@ -1,5 +1,7 @@
 package hexlet.code.games;
 
+import hexlet.code.Utils;
+
 public final class Even  implements Gameable {
     private final String gameTitle = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     private final int maxRandomNumber = 1000;
@@ -8,22 +10,14 @@ public final class Even  implements Gameable {
     public QuizQuestion getNewQuizQuestion() {
         int randomNumber = Utils.generateRandomNumber(maxRandomNumber);
 
-        String question = calculateQuestion(randomNumber);
-        String rightAnswer = calculateRightAnswer(randomNumber);
+        String question = String.valueOf(randomNumber);
+        String rightAnswer = (isEven(randomNumber)) ? "Yes" : "No";
 
         return new QuizQuestion(question, rightAnswer);
     }
 
-    private String calculateQuestion(int randomNumber) {
-        return "Question: " + randomNumber;
-    }
-
-    private String calculateRightAnswer(int randomNumber) {
-        if ((randomNumber % 2) == 0) {
-            return "Yes";
-        } else {
-            return "No";
-        }
+    private boolean isEven(int number) {
+        return ((number % 2) == 0);
     }
 
     @Override

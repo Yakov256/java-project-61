@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Engine {
     private final int maxRoundsCount = 3;
     public Engine(Gameable game) {
-        int correctAnswerCount = 0;
         Scanner scanner = new Scanner(System.in);
 
         String userName = Cli.askName();
@@ -16,24 +15,21 @@ public class Engine {
 
         for (int i = 0; i < maxRoundsCount; i++) {
             QuizQuestion question = game.getNewQuizQuestion();
-            System.out.println(question.getQuestion());
+            System.out.println("Question: " + question.getQuestion());
             String userAnswer = scanner.next();
 
             if (userAnswer.equalsIgnoreCase(question.getRightAnswer())) {
                 System.out.println("Your answer: " + userAnswer);
                 System.out.println("Correct!");
-                correctAnswerCount++;
             } else {
                 System.out.println(userAnswer + " is wrong answer ;(. Correct answer was  '"
                         + question.getRightAnswer() + "'.");
                 System.out.println("Let's try again, " + userName + "!");
-                break;
+                return;
             }
         }
 
-        if (correctAnswerCount >= maxRoundsCount) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
+        System.out.println("Congratulations, " + userName + "!");
 
     }
 

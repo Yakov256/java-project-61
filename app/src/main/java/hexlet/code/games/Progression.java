@@ -1,5 +1,7 @@
 package hexlet.code.games;
 
+import hexlet.code.Utils;
+
 public final class Progression implements Gameable {
     private final String gameTitle = "What number is missing in the progression?";
     private final int maxProgressionStep = 9;
@@ -13,26 +15,31 @@ public final class Progression implements Gameable {
         int startNumber = Utils.generateRandomNumber(1, maxStartNumber);
         int hiddenNumber = Utils.generateRandomNumber(1, sequenceLength - 1);
 
-        String rightAnswer = calculateRightAnswer(startNumber, stepValue, hiddenNumber);
-        String question = calculateQuestion(startNumber, stepValue, sequenceLength, hiddenNumber);
+        int[] progression = getProgression(startNumber, stepValue, sequenceLength);
 
-        return new QuizQuestion(question, rightAnswer);
-    }
-
-    private String calculateQuestion(int startNumber, int stepValue, int sequenceLength, int hiddenNumber) {
-        StringBuilder questionStr = new StringBuilder("Question:");
-        for (int i = 0; i < sequenceLength; i++) {
+        StringBuilder questionStr = new StringBuilder();
+        for (int i = 0; i < progression.length; i++) {
             if (i != hiddenNumber) {
-                questionStr.append(" " + (startNumber + stepValue * i));
+                questionStr.append(" " + progression[i]);
             } else {
                 questionStr.append(" ..");
             }
         }
-        return questionStr.toString();
+
+        String question = questionStr.toString();
+        String rightAnswer = String.valueOf(progression[hiddenNumber]);
+
+        return new QuizQuestion(question, rightAnswer);
     }
 
-    private String calculateRightAnswer(int startNumber, int stepValue, int hiddenNumber) {
-        return String.valueOf(startNumber + stepValue * hiddenNumber);
+    private int[] getProgression(int startNumber, int stepValue, int sequenceLength) {
+        int[] progression = new int[sequenceLength];
+
+        for (int i = 0; i < sequenceLength; i++) {
+            progression[i] = startNumber + stepValue * i;
+        }
+
+        return progression;
     }
 
     @Override

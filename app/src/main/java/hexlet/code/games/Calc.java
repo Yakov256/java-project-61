@@ -1,64 +1,31 @@
 package hexlet.code.games;
 
+import hexlet.code.Utils;
+
 public final class Calc implements Gameable {
     private final String gameTitle = "What is the result of the expression?";
     private final int maxRandomNumber = 50;
-    private final int maxDifferentOperations = 3;
+    private final int maxDifferentOperations = 2;
 
     @Override
     public QuizQuestion getNewQuizQuestion() {
+        String[] mathOperation = new String[] {"+", "-", "*"};
         int randomMathOperation = Utils.generateRandomNumber(maxDifferentOperations);
         int randomNumber1 = Utils.generateRandomNumber(maxRandomNumber);
         int randomNumber2 = Utils.generateRandomNumber(maxRandomNumber);
 
-        String question =  calculateQuestion(randomNumber1, randomMathOperation, randomNumber2);
-        String rightAnswer = calculateRightAnswer(randomNumber1, randomMathOperation, randomNumber2);
+        String question = randomNumber1 + " " + mathOperation[randomMathOperation] + " " + randomNumber2;
+        String rightAnswer = calculateMathematicalExpression(randomNumber1, randomMathOperation, randomNumber2);
 
         return new QuizQuestion(question, rightAnswer);
    }
 
-    private String calculateQuestion(int randomNumber1, int randomMathOperation, int randomNumber2) {
-        /* Переделал на case все работает, но такое решение не пропускает линтер,
-           пришлось делать через если.
-        switch (randomMathOperation) {
-            case 0 -> mathOperation = "+";
-            case 1 -> mathOperation = "-";
-            default -> mathOperation = "*";
-        }
-        */
-
-        String mathOperation = "";
-        if (randomMathOperation == 0) {
-            mathOperation = "+";
-        } else if (randomMathOperation == 1) {
-            mathOperation = "-";
-        } else {
-            mathOperation = "*";
-        }
-
-        return "Question: " + randomNumber1 + " " + mathOperation + " " + randomNumber2;
-    }
-
-    private String calculateRightAnswer(int randomNumber1, int randomMathOperation, int randomNumber2) {
-        /* Переделал на case все работает, но такое решение не пропускает линтер,
-           пришлось делать через если.
-        switch (randomMathOperation) {
-            case 0 -> rezult = String.valueOf(randomNumber1 + randomNumber2);
-            case 1 -> rezult = String.valueOf(randomNumber1 - randomNumber2);
-            default -> rezult = String.valueOf(randomNumber1 * randomNumber2);
-        }
-        */
-
-        String rezult = "";
-        if (randomMathOperation == 0) {
-            rezult = String.valueOf(randomNumber1 + randomNumber2);
-        } else if (randomMathOperation == 1) {
-            rezult = String.valueOf(randomNumber1 - randomNumber2);
-        } else {
-            rezult = String.valueOf(randomNumber1 * randomNumber2);
-        }
-
-        return rezult;
+    private String calculateMathematicalExpression(int randomNumber1, int randomMathOperation, int randomNumber2) {
+        return switch (randomMathOperation) {
+            case 0 -> String.valueOf(randomNumber1 + randomNumber2);
+            case 1 -> String.valueOf(randomNumber1 - randomNumber2);
+            default -> String.valueOf(randomNumber1 * randomNumber2);
+        };
     }
 
     @Override
