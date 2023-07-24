@@ -5,7 +5,7 @@ import hexlet.code.Utils;
 public final class Progression implements Gameable {
     private final String gameTitle = "What number is missing in the progression?";
     private final int maxProgressionStep = 9;
-    private final int maxSequenceLength = 8;
+    private final int maxSequenceLength = 10;
     private final int maxStartNumber = 25;
 
     @Override
@@ -20,7 +20,8 @@ public final class Progression implements Gameable {
         StringBuilder questionStr = new StringBuilder();
         for (int i = 0; i < progression.length; i++) {
             if (i != hiddenNumber) {
-                questionStr.append(" " + progression[i]);
+                questionStr.append(" ");
+                questionStr.append(progression[i]);
             } else {
                 questionStr.append(" ..");
             }
