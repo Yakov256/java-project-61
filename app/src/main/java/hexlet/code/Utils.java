@@ -12,7 +12,5 @@ public class Utils {
         } else {
             return 0;
         }
-
     }
-
 }

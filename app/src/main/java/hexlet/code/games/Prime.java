@@ -9,11 +9,9 @@ public final class Prime implements Gameable {
     @Override
     public QuizQuestion getNewQuizQuestion() {
         int randomNumber = Utils.generateRandomNumber(maxRandomNumber);
-
-        String question = String.valueOf(randomNumber);
         String rightAnswer = (isPrime(randomNumber)) ? "Yes" : "No";
 
-        return new QuizQuestion(question, rightAnswer);
+        return new QuizQuestion(String.valueOf(randomNumber), rightAnswer);
     }
 
     private Boolean isPrime(int randomNumber) {

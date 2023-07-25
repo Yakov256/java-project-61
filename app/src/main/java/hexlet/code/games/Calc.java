@@ -24,7 +24,8 @@ public final class Calc implements Gameable {
         return switch (randomMathOperation) {
             case 0 -> String.valueOf(randomNumber1 + randomNumber2);
             case 1 -> String.valueOf(randomNumber1 - randomNumber2);
-            default -> String.valueOf(randomNumber1 * randomNumber2);
+            case 2 -> String.valueOf(randomNumber1 * randomNumber2);
+            default -> throw new IllegalArgumentException();
         };
     }
 
@@ -32,5 +33,4 @@ public final class Calc implements Gameable {
     public String getGameTitle() {
         return gameTitle;
     }
-
 }

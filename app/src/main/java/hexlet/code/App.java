@@ -5,9 +5,11 @@ import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
 import hexlet.code.games.Prime;
 import hexlet.code.games.Progression;
-
 import java.io.IOException;
 import java.util.Scanner;
+
+// Использование: Code -> Code clean в Idea, ничего не изменило в проекте,
+// но я постарался навести порядок в ручном режиме.
 
 public class App {
     public static void main(String[] args) throws IOException {
@@ -28,7 +30,6 @@ public class App {
             case "6" -> new Engine(new Prime());
             default -> throw new IOException("invalid user input");
         }
-
     }
 
     public static void showMainMenu() {
@@ -41,5 +42,4 @@ public class App {
         System.out.println("6 - Prime");
         System.out.println("0 - Exit");
     }
-
 }
