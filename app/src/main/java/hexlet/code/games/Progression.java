@@ -26,7 +26,7 @@ public final class Progression implements Gameable {
         int[] progression = new int[sequenceLength];
 
         for (int i = 0; i < sequenceLength; i++) {
-            progression [i] = startNumber + stepValue * i;
+            progression[i] = startNumber + stepValue * i;
         }
 
         return progression;
