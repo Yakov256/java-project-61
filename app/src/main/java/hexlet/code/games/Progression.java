@@ -37,7 +37,7 @@ public final class Progression implements Gameable {
     private String getQuestion(int[] progression, int hiddenNumber) {
         StringBuilder questionStr = new StringBuilder();
         for (int i = 0; i < progression.length; i++) {
-            questionStr.append( (i != hiddenNumber) ? progression[i] : "..");
+            questionStr.append((i != hiddenNumber) ? progression[i] : "..");
 
             if ((i + 1) < progression.length) {
                 questionStr.append(" ");
