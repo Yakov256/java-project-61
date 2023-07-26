@@ -9,9 +9,7 @@ public final class Even  implements Gameable {
     @Override
     public QuizQuestion getNewQuizQuestion() {
         int randomNumber = Utils.generateRandomNumber(maxRandomNumber);
-        String rightAnswer = (isEven(randomNumber)) ? "Yes" : "No";
-
-        return new QuizQuestion(String.valueOf(randomNumber), rightAnswer);
+        return new QuizQuestion(String.valueOf(randomNumber), (isEven(randomNumber)) ? "Yes" : "No");
     }
 
     private boolean isEven(int number) {
